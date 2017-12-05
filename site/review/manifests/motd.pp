@@ -2,7 +2,7 @@ class review::motd {
 
   file { '/etc/motd':
     ensure  => file,
-    content => epp('motd.epp'),
+    content => epp('review/motd.epp'),
   }
 
 }
