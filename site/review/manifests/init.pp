@@ -1,4 +1,4 @@
-class review ( String $user = 'review' )
+class review
 
 {
   # this class should accept a parameter rather than having
