@@ -24,9 +24,9 @@ define system::managed_user (
     }
   }
   
-  exec { 'requested-output':
-    path      => '/bin',
-    command   => 'echo Moo to you Too!',
-    logoutput => true,
-  }
+#  exec { 'requested-output':
+#    path      => '/bin',
+#    command   => 'echo Moo to you Too!',
+#    logoutput => true,
+#  }
 }
