@@ -29,5 +29,5 @@ class review {
     name	=> 'puppet',
     enable	=> 'false',
     ensure	=> 'stopped'
-}
+  }
 }
