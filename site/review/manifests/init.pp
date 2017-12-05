@@ -1,4 +1,6 @@
 class review {
+  $user = 'review'
+  
   # this class should accept a parameter rather than having
   # the username hardcoded.
 
@@ -12,6 +14,19 @@ class review {
     ensure     => present,
     shell      => '/bin/bash',
     managehome => true,
+  }
+  
+  user { $user :
+    ensure => present,
+    shell = '/bin/bash',
+    managehome => true,
+  }
+  
+  file { '/home/${user}/.bashrc' :
+    ensure => file,
+    owner => '${user}',
+    group => '${user}',
+    source => 'puppet:///modules/review/bashrc',
   }
 
   file { '/home/bob/.bashrc':
