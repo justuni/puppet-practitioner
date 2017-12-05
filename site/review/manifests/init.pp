@@ -1,4 +1,4 @@
-class review
+class review ( $user = 'review')
 
 {
   # this class should accept a parameter rather than having
@@ -13,6 +13,12 @@ class review
   user { 'bob':
     ensure     => present,
     shell      => '/bin/bash',
+    managehome => true,
+  }
+  
+  user { $user :
+  	ensure => present,
+    shell => '/bin/bash',
     managehome => true,
   }
   
