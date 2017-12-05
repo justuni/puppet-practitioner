@@ -1,4 +1,5 @@
 define system::managed_user (
+  $password,
   $home = undef,
 ) {
   if $home {
