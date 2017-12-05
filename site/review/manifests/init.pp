@@ -1,5 +1,4 @@
-class review {
-
+class review (
   $user = 'review',
 ) {
   include review::motd
@@ -10,7 +9,7 @@ class review {
   # Uncomment and use this variable where appropriate
   $homedir = $user ? {
    'root'  => '/root',
-   default => "/home/$user",
+   default => "/home/{$user}",
   }
 
   user { $user:
@@ -19,7 +18,7 @@ class review {
     managehome => true,
   }
 
-  file { '${homedir}/.bashrc':
+  file { "${homedir}/.bashrc":
     ensure => file,
     owner  => $user,
     group  => $user,
@@ -27,7 +26,9 @@ class review {
     source => 'puppet:///modules/review/bashrc'
   }
 
-  # add the proper resource to ensure that the Puppet agent is not running
-  # in the background. How would you discover the service name?
+  service { 'puppet':
+    ensure => stopped,
+    enable => false,
+  }
 
 }
