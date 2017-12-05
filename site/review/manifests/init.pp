@@ -1,5 +1,5 @@
 class review (
-  $user = review,
+  $user = 'review',
 ) {
   # this class should accept a parameter rather than having
   # the username hardcoded.
@@ -8,7 +8,7 @@ class review (
   # Uncomment and use this variable where appropriate
   $homedir = $user ? {
     'root'  => '/root',
-    default => "/home/$user",
+    default => "/home/${user}",
   }
 
   user { $user:
