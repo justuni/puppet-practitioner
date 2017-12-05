@@ -1,6 +1,4 @@
-class review(
-  $user = 'review'
- )
+class review ( String $user = 'review' )
 
 {
   # this class should accept a parameter rather than having
@@ -18,17 +16,6 @@ class review(
     managehome => true,
   }
   
-  user { $user :
-    ensure => present,
-    shell = '/bin/bash',
-  }
-  
-  file { '/home/${user}/.bashrc' :
-    ensure => file,
-    owner => '${user}',
-    group => '${user}',
-    source => 'puppet:///modules/review/bashrc',
-  }
 
   file { '/home/bob/.bashrc':
     ensure => file,
