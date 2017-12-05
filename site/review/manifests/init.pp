@@ -29,7 +29,7 @@ user { '$user':
   # add the proper resource to ensure that the Puppet agent is not running
   # in the background. How would you discover the service name?
   service { 'puppet':
-  	ensured => stopped,
+  	ensure => stopped,
     enable => false,
   }
 }
