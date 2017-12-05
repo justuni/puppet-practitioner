@@ -1,4 +1,4 @@
-define system::managed_user (
+define system::managed_user ( ['fred', 'barney']:
   $home = undef,
   $password = undef,
 
