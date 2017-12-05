@@ -18,7 +18,7 @@ define system::managed_user (
      owner  => $title,
      group  => $title,
      mode   => '0644'
-     source => 'puppet:///modules/system/bashrc'
+
   }
 
   
