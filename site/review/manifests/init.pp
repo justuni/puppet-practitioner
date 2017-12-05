@@ -5,10 +5,10 @@ class review (
   # the username hardcoded.
 
   # Uncomment and use this variable where appropriate
-#  $homedir = $user ? {
-#    'root'  => '/root',
-#    default => "/home/$user",
-#  }
+  $homedir = $user ? {
+    'root'  => '/root',
+    default => "/home/$user",
+  }
 
   user { $user:
     ensure     => present,
@@ -16,7 +16,7 @@ class review (
     managehome => true,
   }
 
-  file { '/home/bob/.bashrc':
+  file { "$homedir/.bashrc":
     ensure => file,
     owner  => $user,
     group  => $user,
