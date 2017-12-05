@@ -4,14 +4,14 @@ define system::managed_user (
 ){
   $homedir = $title ? {
     'root'  => '/root',
-    default => "/home/${title},
+    default => "/home/${title}",
   }
-
   user { $title:
     ensure     => present,
     password   => $password,
     managehome => true,
   }
+
   if $kernal == 'Linux' {
    file { "${homedir}/.bashrc":
      ensure => file,
