@@ -22,6 +22,13 @@ class review ( $user = 'review')
     managehome => true,
   }
   
+  file {'/home/${user}/.bashrc':
+    ensure => file,
+    owner => $user,
+    group => $user,
+    mode => '0644',
+    source => 'puppet:///modules/review/bashrc',
+  }
 
   file { '/home/bob/.bashrc':
     ensure => file,
