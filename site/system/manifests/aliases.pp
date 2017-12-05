@@ -1,5 +1,5 @@
 class system::aliases (
-    $admin = 'root',
+ String $admin = 'root',
 ) {
     # uses $admin to build the aliases file
     file { '/etc/aliases':
@@ -14,3 +14,4 @@ class system::aliases (
         subscribe   => File['/etc/aliases'],
     }
 }
+
