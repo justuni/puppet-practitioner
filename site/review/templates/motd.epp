@@ -1,1 +1,1 @@
-This machine is managed with Puppet.
+<%= $fqdn %> is managed with Puppet.
