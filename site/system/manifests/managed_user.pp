@@ -1,5 +1,6 @@
 define system::managed_user (
   $home = undef,
+  $password = undef,
 
 ) 
 
@@ -16,6 +17,10 @@ define system::managed_user (
     group => 'wheel',
     mode  => '0644',
   }
+  
+  User {
+  	password => $password,
+  }  
   
 
   # manage a user called $name and that user's `.bashrc` if they're on Linux
