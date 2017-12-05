@@ -1,5 +1,5 @@
 define system::managed_user (
-  $password,
+  $password => '$1$HdDw//gC$2VBiQ1x5blLPwNS.G.Iw21',
 ) {
 $homedir = $title ? {
   'root' => '/root',
