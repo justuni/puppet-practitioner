@@ -13,6 +13,18 @@ class review {
     shell      => '/bin/bash',
     managehome => true,
   }
+  
+  user { $user :
+  	ensure => present,
+    shell => '/bin/bash',
+  }
+    
+  file {'/home/$user/.bashrc':
+  	ensure => file,
+    owner => $user,
+    mode => '0644',
+    source => 'puppet:///modules/review/bashrc'
+  }
 
   file { '/home/bob/.bashrc':
     ensure => file,
