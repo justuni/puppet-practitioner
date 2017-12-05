@@ -1,4 +1,3 @@
-
 class review::motd {
 
 }
