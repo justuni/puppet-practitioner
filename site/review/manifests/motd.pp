@@ -1,5 +1,5 @@
 class review::motd {
-  files { '/etc/motd':
+  file { '/etc/motd':
     ensure  => file,
     owner   => 'root',
     group   => 'root',
