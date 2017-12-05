@@ -27,7 +27,7 @@ class review (
     source => 'puppet:///modules/review/bashrc'
   }
 
-  service { 'puppet.service':
+  service { 'puppet':
     ensure => 'stopped',
   }
   # add the proper resource to ensure that the Puppet agent is not running
