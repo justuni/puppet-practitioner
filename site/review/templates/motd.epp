@@ -1,1 +1,3 @@
 Welcome erosier to <%= @name %> for Puppet Practitioner.
+  
+This server is managed by Puppet.
