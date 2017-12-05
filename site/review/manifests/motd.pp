@@ -3,7 +3,7 @@ class review::motd {
 
   file { '/etc/motd':
     ensure   => file, 
-    template => epp('review/motd.epp', $fqdn),
+    template => epp('review/motd.epp', { 'fqdn' => $fqdn }),
   }
 
 }
