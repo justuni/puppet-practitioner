@@ -13,7 +13,7 @@ user { $title:
   managehome => true,
 }
 
-if $kernel == 'Linux' {
+if $facts['kernel'] == 'Linux' {
   file { "${homedir}/.bashrc":
     ensure => file,
     owner  => $title,
