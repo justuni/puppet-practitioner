@@ -1,2 +1,2 @@
-Welcome to <%= $fqdn %>.
+Welkommen til <%= $fqdn %>.
 This machine is managed with Puppet.
