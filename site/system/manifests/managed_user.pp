@@ -1,7 +1,6 @@
 define system::managed_user (
   $password = undef,
   $home     = undef,
-  $shell    = '/bin/bash',
 ) {
   if $home {
     $homedir = $home
@@ -23,11 +22,11 @@ define system::managed_user (
   user { $name:
     ensure     => present,
     password   => $password,
-    shell      => $shell,
+    shell      => '/bin/bash',
     managehome => true,
   }
 
-  if $shell == '/bin/bash' {
+  if $kernel == 'Linux' {
     file { "$homedir/.bashrc":
       ensure => file
       group  => $name,
