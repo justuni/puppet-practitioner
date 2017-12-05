@@ -1,8 +1,10 @@
 class review (
   String $user = 'review'
 ) {
-  # this class should accept a parameter rather than having
-  # the username hardcoded.
+  include review::motd
+
+# this class should accept a parameter rather than having
+# the username hardcoded.
 
   # Uncomment and use this variable where appropriate
   $homedir = $user ? {
