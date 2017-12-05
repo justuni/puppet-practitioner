@@ -22,7 +22,7 @@ class review ( $user = 'review')
     managehome => true,
   }
   
-  file {'/home/$user/.bashrc':
+  file {"/home/${user}/.bashrc":
     ensure => file,
     owner => $user,
     group => $user,
