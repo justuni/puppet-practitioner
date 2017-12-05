@@ -2,7 +2,7 @@ class review::motd {
 
   file { "/etc/motd":
     ensure => file,
-    mode   => '0r44',
+    mode   => '0444',
     content => epp('review/motd.epp'),
   }
 
