@@ -8,7 +8,7 @@ class review (
   # Uncomment and use this variable where appropriate
   $homedir = $user ? {
     'root'  => '/root',
-    default => "/home/$user",
+    default => "/home/${user}",
   }
 
 user { '$user':
