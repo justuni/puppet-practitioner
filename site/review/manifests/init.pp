@@ -1,6 +1,8 @@
-class review {
+class review(
   $user = 'review'
-  
+ )
+
+{
   # this class should accept a parameter rather than having
   # the username hardcoded.
 
