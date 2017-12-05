@@ -8,10 +8,10 @@ class review {
   # the username hardcoded.
 
   # Uncomment and use this variable where appropriate
-  # $homedir = $user ? {
-  #  'root'  => '/root',
-  # default => "/home/$user",
-  #}
+  $homedir = $user ? {
+   'root'  => '/root',
+   default => "/home/$user",
+  }
 
   user { $user:
     ensure     => present,
