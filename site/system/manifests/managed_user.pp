@@ -1,6 +1,6 @@
 define system::managed_user (
   $home = undef,
-  $password = '$1$tuO5JmiG$yV4wbsuSi9T7T2T.jOJDa1'
+  $password,
 ) {
   if $home {
     $homedir = $home
