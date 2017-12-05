@@ -12,7 +12,7 @@ define system::managed_user (
     managehome => true,
   }
 
- f $kernel == 'Linux' {
+  $kernel == 'Linux' {
    file { "${homedir}/.bashrc":
      ensure => file,
      owner  => $title,
