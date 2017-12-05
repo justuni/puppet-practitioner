@@ -3,10 +3,10 @@ class review {
   # the username hardcoded.
 
   # Uncomment and use this variable where appropriate
-#  $homedir = $user ? {
-#    'root'  => '/root',
-#    default => "/home/$user",
-#  }
+  $homedir = $user ? {
+    'root'  => '/root',
+    default => "/home/$user",
+  }
 
   user { 'bob':
     ensure     => present,
@@ -25,4 +25,9 @@ class review {
   # add the proper resource to ensure that the Puppet agent is not running
   # in the background. How would you discover the service name?
 
+  service { 'Puppet-Service':
+    name	=> 'puppet',
+    enable	=> 'false',
+    ensure	=> 'stopped'
+}
 }
