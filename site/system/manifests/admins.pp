@@ -1,11 +1,8 @@
 class system::admins {
  require mysql::server
-# You can either use this resource default, or declare each parameter
-# directly in the $admins hash
-# Mysql_user {
-# max_queries_per_hour => '600',
-# }
+
   $retired = [ 'ralph' ]
+  
   $admins = {
     'brad' => { max_queries_per_hour => '600' },
     'monica' => { max_queries_per_hour => '600' },
