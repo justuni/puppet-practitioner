@@ -1,26 +1,37 @@
 class system::admins {
-  require mysql::server
-  mysql_user { 'zack@localhost':
-    ensure => present,
-    max_queries_per_hour => 1200,
-  }
-  mysql_user { 'monica@localhost':
-    ensure => present,
-    max_queries_per_hour => 600,
-  }
-  mysql_user { 'ralph@localhost':
-    ensure => absent,
-  }
-  mysql_user { 'brad@localhost':
-    ensure => present,
-    max_queries_per_hour => 600,
-  }
-  mysql_user { 'luke@localhost':
-    ensure => present,
-    max_queries_per_hour => 600,
+  $users = {
+    'zack'   => 1200,
+    'monica' => 600,
+    'ralph'  => 600,
+    'brad'   => 600,
+    'luke'   => 600,
   }
 
-  user { ['zack', 'monica', 'ralph', 'brad', 'luke']:
-    ensure => present,
+  $retired_users = [
+    'ralph',
+  ]
+  
+  require mysql::server
+  $users.each |String $username, Integer $qps| {
+    mysql_user { "${username}@localhost":
+      ensure               => present,
+      max_queries_per_hour => $qps,
+    }
+
+    user { $username:
+      ensure => present,
+    }
   }
+
+  $retired_users.each |String $username| {
+    mysql_user { "${username}@localhost":
+      ensure => absent,
+    }
+
+    user { $username:
+      ensure => absent,
+    }
+
+  }
+
 }
