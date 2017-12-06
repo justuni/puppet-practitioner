@@ -1,10 +1,9 @@
 class system::admins {
   $users = {
-    'zack'   => 1200,
-    'monica' => 600,
-    'ralph'  => 600,
-    'brad'   => 600,
-    'luke'   => 600,
+    'zack'   => { 'max_queries_per_hour' => 1200 },
+    'monica' => { 'max_queries_per_hour' => 600 },
+    'brad'   => { 'max_queries_per_hour' => 600 },
+    'luke'   => { 'max_queries_per_hour' => 600 },
   }
 
   $retired_users = [
@@ -12,10 +11,10 @@ class system::admins {
   ]
   
   require mysql::server
-  $users.each |String $username, Integer $qps| {
+  $users.each |String $username, Hash $params| {
     mysql_user { "${username}@localhost":
       ensure               => present,
-      max_queries_per_hour => $qps,
+      max_queries_per_hour => $params['max_queries_per_hour'],
     }
 
     user { $username:
