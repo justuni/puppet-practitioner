@@ -1,36 +1,33 @@
 class system::admins {
-
-  user { ['zack', 'monica', 'ralph', 'brad', 'luke']:
-    ensure => present,
-  }
-
-  ->
-  
   require mysql::server
-  
-  ->
-  
-  $mysql_users = ['zack@localhost', 'monica@localhost', 'brad@localhost', 'luke@localhost']
-
-  -> 
-  
-  $mysql_users.each |String $mysql_user| {
-    mysql_user { "${mysql_user}":
+  # You can either use this resource default, or declare each parameter
+  # directly in the $admins hash
+  # Mysql_user {
+  # max_queries_per_hour => '600',
+  # }
+  $retired = [ 'ralph' ]
+  $admins = {
+    'brad' => { max_queries_per_hour => '600' },
+    'monica' => { max_queries_per_hour => '600' },
+    'luke' => { max_queries_per_hour => '600' },
+    'zack' => { max_queries_per_hour => '1200' },
+  }
+  $admins.each |$user, $params| {
+    mysql_user { "${user}@localhost":
       ensure => present,
-      max_queries_per_hour => 600,
+      max_queries_per_hour => $params['max_queries_per_hour'],
+    }
+    user { $user:
+      ensure => present,
+      managehome => true,
     }
   }
-
-  ->
-  
-  mysql_user { 'zack@localhost':
-    max_queries_per_hour => 1200,
+  $retired.each |$user| {
+    mysql_user { "${user}@localhost":
+      ensure => absent,
+    }
+    user { $user:
+      ensure => absent,
+    }
   }
-  
-  ->
-  
-  mysql_user { 'ralph@localhost':
-    ensure => absent,
-  }
-
 }
