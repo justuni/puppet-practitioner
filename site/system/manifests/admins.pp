@@ -8,9 +8,9 @@ class system::admins {
   }
 
   $retired_users = [
-    'ralph',
+    'ralph'
   ]
-  
+
   require mysql::server
   $users.each |String $username, Hash $params| {
     $default_max_queries_per_hour => 600
